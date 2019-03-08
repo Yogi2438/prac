@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+</head>
+<body>
+	<div style="background: #14c9cc; margin-bottom: 50px;">
+		<div style="color: #00041a; font-size: 24px; padding: 15px;  margin-left:70px; float: left;">Student Register </div>
+		<a href="{% url 'index' %}" style="text-decoration: none;">
+			<div style="color: #00041a; font-size: 24px; padding: 15px; text-align: right; margin-right:70px;">Home</div>
+		</a>
+	</div>
+	<div style="text-align: center;">
+
+
+		<form action="{% url 'studentreg' %}" method="POST">
+			{% csrf_token %}
+			{{ regform.as_table }}
+			<input type="submit" name="Register" value="Register">
+		</form>
+
+
+	</div>
+	
+</body>
+</html>

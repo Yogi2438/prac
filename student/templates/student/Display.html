@@ -1,0 +1,57 @@
+<style>
+	tbody tr td a {text-decoration: none;}
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Details</title>
+</head>
+<body>
+	<div style="background: #14c9cc; margin-bottom: 50px;">
+		<div style="color: #00041a; font-size: 24px; padding: 15px; margin-left:70px; float: left;">Student details</div>
+		<a href="{% url 'index' %}" style="text-decoration: none;">
+			<div style="color: #00041a; font-size: 24px; padding: 15px; text-align: right; margin-right:70px;">Home</div>
+		</a>
+	</div>
+	
+	{% if messages %}
+		<div style="margin-bottom: 20px;">
+		{% for message in messages %}
+			<div style="padding-left: 30px;">{{ message }}</div>
+		{% endfor %}
+		</div>
+	{% endif %}
+
+	<div style="text-align: center;">
+		<table style="border: 1px solid black; text-align: center;" border="1">
+			<caption style="margin-bottom: 8px;">student details</caption>
+			<thead>
+				<tr>
+					<th style="padding: 10px;">Name</th>
+					<th style="padding: 10px;">Standerd</th>
+					<th style="padding: 10px;">Roll No</th>
+					<th style="padding: 10px;">Edit</th>
+					<th style="padding: 10px;">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for display in data %}
+				<tr>
+					<td>{{ display.name }}</td>
+					<td>{{ display.std }}</td>
+					<td>{{ display.roll_no }}</td>
+					<td><a href="{% url 'updatestud' display.id %}">Edit {{display.id}}</a></td>
+					<td><a href="{% url 'deletstud' display.id %}">Delete {{display.id}}</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+	<div style="margin-left: 130px; margin-top: 15px;">
+		<a href="{% url 'getjson' %}" style="text-decoration: none;">Get Json Data</a>
+	</div>
+
+	
+</body>
+</html>

@@ -1,0 +1,33 @@
+<style>
+	.center{ text-align:  center; }
+	input{ padding: 3px; }
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div style="background: #14c9cc; margin-bottom: 50px;">
+		<div style="color: #00041a; font-size: 24px; padding: 15px; margin-left:70px; float: left;">Student Update Form</div>
+		<a href="{% url 'index' %}" style="text-decoration: none;">
+			<div style="color: #00041a; font-size: 24px; padding: 15px; text-align: right; margin-right:70px;">Home</div>
+		</a>
+	</div>
+
+	<div class="center">
+		<div>Student Form</div><br>
+		{% for value in studdata %}
+			<form action="{% url 'finalstudupdate' %}" method="POST">
+				{% csrf_token %}
+				<input type="hidden" value="{{ value.id }}" name="studid"><br><br>
+				<input type="text" value="{{ value.name }}" name="name"><br><br>
+				<input type="text" value="{{ value.std }}" name="std"><br><br>
+				<input type="number" value="{{ value.roll_no }}" name="roll_no"><br><br>
+				<input type="password" value="{{ value.password }}" name="password"><br><br>
+				<input type="submit" name="Update" value="Update">
+			</form>
+		{% endfor %}
+	</div>
+</body>
+</html>
